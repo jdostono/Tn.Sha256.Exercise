@@ -7,16 +7,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0-buster-slim AS build
 WORKDIR /src
-COPY ["Startkraft.ExerciseService.Api/Startkraft.ExerciseService.Api.csproj", "Startkraft.ExerciseService.Api/"]
-RUN dotnet restore "Startkraft.ExerciseService.Api/Startkraft.ExerciseService.Api.csproj"
+COPY ["Tn.Sha256Exercise.Api.csproj", "Tn.Sha256Exercise.Api/"]
+RUN dotnet restore "Tn.Sha256Exercise.Api/Tn.Sha256Exercise.Api.csproj"
 COPY . .
-WORKDIR "/src/Startkraft.ExerciseService.Api"
-RUN dotnet build "Startkraft.ExerciseService.Api.csproj" -c Release -o /app/build
+WORKDIR "/src/Tn.Sha256Exercise.Api"
+RUN dotnet build "Tn.Sha256Exercise.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Startkraft.ExerciseService.Api.csproj" -c Release -o /app/publish
+RUN dotnet publish "Tn.Sha256Exercise.Api.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Startkraft.ExerciseService.Api.dll"]
+ENTRYPOINT ["dotnet", "Tn.Sha256Exercise.Api.dll"]

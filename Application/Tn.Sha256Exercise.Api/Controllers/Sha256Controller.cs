@@ -3,9 +3,9 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Tn.Sha256.Api.Services;
+using Tn.Sha256Exercise.Api.Services;
 
-namespace Tn.Sha256.Api.Controllers
+namespace Tn.Sha256Exercise.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
